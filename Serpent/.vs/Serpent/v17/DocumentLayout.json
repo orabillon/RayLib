@@ -27,15 +27,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Serpent",
+              "Title": "Serpent.csproj",
               "DocumentMoniker": "C:\\Users\\orabi\\Documents\\GitHub\\RayLib\\Serpent\\Serpent\\Serpent.csproj",
               "RelativeDocumentMoniker": "Serpent\\Serpent.csproj",
               "ToolTip": "C:\\Users\\orabi\\Documents\\GitHub\\RayLib\\Serpent\\Serpent\\Serpent.csproj",
               "RelativeToolTip": "Serpent\\Serpent.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-05-05T14:44:57.131Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-05T14:44:57.131Z"
             },
             {
               "$type": "Document",
@@ -45,7 +44,7 @@
               "RelativeDocumentMoniker": "Serpent\\Game.cs",
               "ToolTip": "C:\\Users\\orabi\\Documents\\GitHub\\RayLib\\Serpent\\Serpent\\Game.cs",
               "RelativeToolTip": "Serpent\\Game.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAqAAAA",
+              "ViewState": "AQIAACYAAAAAAAAAAAAAADYAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-05T14:45:21.2Z",
               "EditorCaption": ""
@@ -60,8 +59,7 @@
               "RelativeToolTip": "Serpent\\Program.cs",
               "ViewState": "AQIAAA8AAAAAAAAAAAAAABsAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-05T12:42:06.999Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-05T12:42:06.999Z"
             }
           ]
         }

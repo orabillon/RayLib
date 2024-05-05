@@ -12,36 +12,31 @@ namespace Serpent
 {
     public class Game
     {
-        Vector2 position;
+        int[,] map = new int[40,40];
+        private int _tailleCase = 10;
 
-        Texture2D texture;
+        private void _Init()
+        {
+            for (int i = 0; i < map.GetLength(0); i++)
+            {
+                for(int j = 0; j < map.GetLength(1); j++)
+                {
+                    map[i,j] = 0;
+                }
+            }
+        }
 
-        int vitesse = 3;
+        public Game()
+        {
+            _Init();
+        }
 
         public void Load() 
         {
-            texture = Raylib.LoadTexture("images/ship.png");
-            position = new Vector2(50,50);
         }
 
         public void Update() 
         {
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_UP))
-            {
-               position.Y -= vitesse;
-            }
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_LEFT))
-            {
-                position.X -= vitesse;
-            }
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_DOWN))
-            {
-                position.Y += vitesse;
-            }
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT))
-            {
-                position.X += vitesse;
-            }
         }
 
         public void Draw()
@@ -50,16 +45,23 @@ namespace Serpent
 
             Raylib.ClearBackground(Raylib.BLACK);
 
-            Raylib.DrawText("Congrats! You created your first window!", 19, 19, 20, Raylib.WHITE);
+            for (int l = 0; l < map.GetLength(0); l++)
+            {
+                for (int c = 0; c < map.GetLength(1); c++)
+                {
+                    int x = c * _tailleCase;
+                    int y = l * _tailleCase;
 
-            Raylib.DrawTextureEx(texture, position,20,1,Raylib.WHITE);
+                    Raylib.DrawRectangle(x + 30 ,y + 30,_tailleCase - 1, _tailleCase - 1, Raylib.GRAY);
+                }
+            }
 
             Raylib.EndDrawing();
         }
 
         public void Unload() 
         {
-            Raylib.UnloadTexture(texture);
+            
         }
     }
 }
