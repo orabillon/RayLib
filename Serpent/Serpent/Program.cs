@@ -8,10 +8,10 @@ namespace Serpent
         public static Task Main(string[] args)
         {
             const int screenWidth = 800;
-            const int screenHeight = 450;
+            const int screenHeight = 600;
 
             // creation fenetre 
-            Raylib.InitWindow(screenWidth, screenHeight, "Jeu du serpent");
+            Raylib.InitWindow(screenWidth, screenHeight, "Projet 1 : SNAKE  v1.0 05/2024");
             Raylib.SetTargetFPS(60);
 
             Game monJeu = new Game();
