@@ -12,7 +12,7 @@ using Texture2D = Raylib_CsLo.Texture;
 
 namespace Serpent
 {
-    enum Direction {
+    public enum Direction {
         left,up,right,down
     }
 
@@ -25,15 +25,17 @@ namespace Serpent
 
     public class Game
     {
-        int[,] map = new int[20,20];
-        private int _tailleCase = 25;
+        int[,] map = new int[25,25];
+        private int _tailleCase = 20;
         int mapWidth;
         int mapHeight;
         eGameState gameState;
-        int offSetGame = 30;
-        
-        Queue<Point> snake = new Queue<Point>();
-        Point head;
+        int marginWidth;
+        int marginHeight;
+
+
+        Queue<SPoint> snake = new Queue<SPoint>();
+        SPoint head;
         int snakeLength;
         float snakeSpeed;
         Direction snakeDir;
@@ -44,10 +46,21 @@ namespace Serpent
         float timer = 0;
         int score = 0;
 
+        Texture2D texApple;
+        TextureRL[] texSnakeHead;
+        TextureRL[] texSnakeTail;
+        TextureRL[] texSnakeBody;
+
+        Sound sndPomme;
+        Music msPlay;
+
         private void _Init()
         {
             mapWidth = map.GetLength(1);
             mapHeight = map.GetLength(0);
+
+            marginWidth = (Raylib.GetScreenWidth() - mapWidth * _tailleCase)/2;
+            marginHeight = 30;
 
             for (int i = 0; i < mapHeight; i++)
             {
@@ -57,11 +70,6 @@ namespace Serpent
                 }
             }
 
-
-            snake = new Queue<Point>();
-            head = new Point(mapHeight/2, mapWidth/2);
-            snake.Enqueue(head);
-
             timer = 0;
             score = 0;
             snakeSpeed = 0.5f;
@@ -70,24 +78,30 @@ namespace Serpent
             gameState = eGameState.pause;
             snakeLength = 3;
 
+            snake = new Queue<SPoint>();
+            head = new SPoint(new Point(mapHeight / 2, mapWidth / 2), snakeDir);
+            snake.Enqueue(head);
+
             NewApple();
+
+            Raylib.PlayMusicStream(msPlay);
         }
 
         private void SnakeMove(int pOffsetX, int pOffsetY)
         {
-            Point newHead = new Point(head.X + pOffsetX, head.Y + pOffsetY);
+            SPoint newHead = new SPoint(new Point(head.p.X + pOffsetX, head.p.Y + pOffsetY),snakeDir);
            
 
             head = newHead;
 
             // GameOver ?? 
             // condition sortie ecran
-            if(head.X < 0 || head.X > mapWidth - 1 || head.Y > mapHeight -1 || head.Y < 0) 
+            if(head.p.X < 0 || head.p.X > mapWidth - 1 || head.p.Y > mapHeight -1 || head.p.Y < 0) 
             {
                 gameState = eGameState.gameOver;
             }
             // le serpent se mort
-            if (isSnakeAt(head.Y, head.X))
+            if (isSnakeAt(head.p.Y, head.p.X))
             {
                 gameState = eGameState.gameOver;
             }
@@ -105,9 +119,9 @@ namespace Serpent
         {
             bool isSnake = false;
             
-            foreach (Point p in  snake)
+            foreach (SPoint p in  snake)
             {
-                if (p.X == pColonne && p.Y == pLigne) 
+                if (p.p.X == pColonne && p.p.Y == pLigne) 
                 { 
                     isSnake = true; 
                     break; 
@@ -147,7 +161,7 @@ namespace Serpent
             { NextDirection = Direction.up; }
             if (Raylib.IsKeyDown(KeyboardKey.KEY_DOWN) && (snakeDir == Direction.left || snakeDir == Direction.right))
             { NextDirection = Direction.down; }
-            if (Raylib.IsKeyPressed(KeyboardKey.KEY_P))
+            if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE))
             { gameState = eGameState.pause; }
 
             if (timer >= snakeSpeed)
@@ -173,9 +187,10 @@ namespace Serpent
                         break;
                 }
             }
-            // est ce que le serpent mange la pomme ?? 
-            if (head == Apple) 
+            // est ce que le serpent mange la sndPomme ?? 
+            if (head.p == Apple) 
             {
+                Raylib.PlaySound(sndPomme);
                 NewApple();
                 snakeLength++;
                 score++;
@@ -184,6 +199,34 @@ namespace Serpent
 
         public Game()
         {
+            // chargement des image
+            texApple = Raylib.LoadTexture("images/apple.png");
+
+            texSnakeHead = new TextureRL[4];
+            texSnakeHead[(int)Direction.left] = new TextureRL("images/head_left.png");
+            texSnakeHead[(int)Direction.right] = new TextureRL("images/head_right.png");
+            texSnakeHead[(int)Direction.up] = new TextureRL("images/head_up.png");
+            texSnakeHead[(int)Direction.down] = new TextureRL("images/head_down.png");
+
+            texSnakeTail = new TextureRL[4];
+            texSnakeTail[(int)Direction.left] = new TextureRL("images/tail_right.png");
+            texSnakeTail[(int)Direction.right] = new TextureRL("images/tail_left.png");
+            texSnakeTail[(int)Direction.up] = new TextureRL("images/tail_down.png");
+            texSnakeTail[(int)Direction.down] = new TextureRL("images/tail_up.png");
+
+            texSnakeBody = new TextureRL[12+1];
+            texSnakeBody[3] = new TextureRL("images/body_topright.png");
+            texSnakeBody[5] = new TextureRL("images/body_vertical.png");
+            texSnakeBody[6] = new TextureRL("images/body_bottomright.png");
+            texSnakeBody[9] = new TextureRL("images/body_topleft.png");
+            texSnakeBody[10] = new TextureRL("images/body_horizontal.png");
+            texSnakeBody[12] = new TextureRL("images/body_bottomleft.png");
+
+            //chargement sons
+            sndPomme = Raylib.LoadSound("sons/apple.wav");
+            msPlay = Raylib.LoadMusicStream("sons/SnakeRaylib.mp3");
+            msPlay.looping = true;
+
             _Init();
         }
 
@@ -193,6 +236,8 @@ namespace Serpent
 
         public void Update() 
         {
+            Raylib.UpdateMusicStream(msPlay);
+
             switch (gameState)
             {
                 case eGameState.play: 
@@ -213,6 +258,8 @@ namespace Serpent
 
         public void Draw()
         {
+            Font fnt = Raylib.GetFontDefault();
+
             Raylib.BeginDrawing();
 
             Raylib.ClearBackground(Raylib.WHITE);
@@ -224,40 +271,50 @@ namespace Serpent
                 {
                     int x = c * _tailleCase;
                     int y = l * _tailleCase;
-
-                    Raylib.DrawRectangleLines(x + offSetGame ,y + offSetGame,_tailleCase - 1, _tailleCase - 1, Raylib.GRAY);
+                    Raylib.DrawRectangleLines( x + marginWidth , y + marginHeight,_tailleCase-1, _tailleCase-1, Raylib.GRAY);
                 }
             }
 
             // Apple
-            Raylib.DrawRectangle(Apple.X * _tailleCase + offSetGame, Apple.Y * _tailleCase + offSetGame, _tailleCase - 1, _tailleCase - 1, Raylib.RED);
+            Raylib.DrawTexture(texApple, Apple.X * _tailleCase + marginWidth, Apple.Y * _tailleCase + marginHeight, Raylib.WHITE);
 
             // Snake
-            foreach (Point p in snake)
+            int index = 0;
+            foreach (SPoint p in snake)
             {
-                int x = p.X * _tailleCase;
-                int y = p.Y * _tailleCase;
+                int x = p.p.X * _tailleCase;
+                int y = p.p.Y * _tailleCase;
 
-                Raylib.DrawRectangle(x + offSetGame, y + offSetGame, _tailleCase - 1, _tailleCase - 1, Raylib.DARKBLUE);
-            }
+                if (p == snake.Last<SPoint>()) 
+                {
+                    Raylib.DrawTexture(texSnakeHead[(int)snakeDir].texture, x + marginWidth, y + marginHeight, Raylib.WHITE);
+                }
+                else if (p== snake.First<SPoint>()) 
+                {
+                    SPoint next = snake.ElementAt(1);
+                    
+                    Raylib.DrawTexture(texSnakeTail[(int)next.direction].texture, x + marginWidth, y + marginHeight, Raylib.WHITE);
+                }
+                else
+                {
+                    int mask = 0;
 
-            string direction = string.Empty;
-            switch (snakeDir)
-            {
-                case Direction.left:
-                    direction = "Gauche";
-                    break;
-                case Direction.up:
-                    direction = "Haut";
-                    break;
-                case Direction.right:
-                    direction = "Droite";
-                    break;
-                case Direction.down:
-                    direction = "Bas";
-                    break;
-                default:
-                    break;
+                    SPoint before = snake.ElementAt(index - 1);
+                    SPoint after = snake.ElementAt(index + 1);
+
+                    Point cup = new Point(p.p.X, p.p.Y - 1);
+                    Point cdown = new Point(p.p.X, p.p.Y + 1);
+                    Point cleft = new Point(p.p.X - 1, p.p.Y);
+                    Point cright = new Point(p.p.X + 1, p.p.Y);
+
+                    if (cup == before || cup == after) mask += 1;
+                    if (cdown == before || cdown == after) mask += 4;
+                    if (cleft == before || cleft == after) mask += 8;
+                    if (cright == before || cright == after) mask += 2;
+
+                    Raylib.DrawTexture(texSnakeBody[mask].texture, x + marginWidth, y + marginHeight, Raylib.WHITE);
+                }
+                index++;
             }
 
             string statusJeu = string.Empty;
@@ -273,24 +330,52 @@ namespace Serpent
                     statusJeu = "GameOver";
                     break;
             }
+            
+            string Info = $"score : {score}     -     Etat du jeu : {statusJeu}";
+            
 
+            Vector2 txtScoreSize = Raylib.MeasureTextEx(fnt, Info, 30, 1);
+            Vector2 pos = new Vector2((Raylib.GetScreenWidth() - txtScoreSize.X) / 2, (Raylib.GetScreenHeight() - txtScoreSize.Y * 2));
 
-            Raylib.DrawText($"Direction : {direction}",offSetGame + mapHeight * _tailleCase + 10 , offSetGame,20, Raylib.DARKBLUE);
-            Raylib.DrawText($"Etat du jeu : {statusJeu}",offSetGame + mapWidth * _tailleCase + 10, 30 + offSetGame,20, Raylib.DARKBLUE);
-            Raylib.DrawText($"score : {score}",offSetGame + mapWidth * _tailleCase + 10, 60 + offSetGame,20, Raylib.DARKBLUE);
-
+            var color = Raylib.DARKBLUE;
 
             if (gameState == eGameState.gameOver) 
             {
-                Raylib.DrawText($"Game Over", 40, 200, 130, Raylib.VIOLET);  
+               color = Raylib.RED;
             }
+
+            Raylib.DrawTextEx(fnt, Info, pos, 30, 1, color);
 
             Raylib.EndDrawing();
         }
 
         public void Unload() 
         {
-            
+
+            Raylib.UnloadTexture(texApple);
+
+            foreach (TextureRL item in texSnakeBody)
+            {
+                if (item != null)
+                    item.Free();
+            }
+
+            foreach (TextureRL item in texSnakeHead)
+            {
+                if (item != null)
+                    item.Free();
+            }
+
+            foreach (TextureRL item in texSnakeTail)
+            {
+                if (item != null)
+                    item.Free();
+            }
+
+            Raylib.StopMusicStream(msPlay);
+
+            Raylib.UnloadSound(sndPomme);
+            Raylib.UnloadMusicStream(msPlay);
         }
     }
 }

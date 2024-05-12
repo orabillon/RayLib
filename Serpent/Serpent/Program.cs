@@ -11,8 +11,10 @@ namespace Serpent
             const int screenHeight = 600;
 
             // creation fenetre 
-            Raylib.InitWindow(screenWidth, screenHeight, "Projet 1 : SNAKE  v1.0 05/2024");
+            Raylib.InitWindow(screenWidth, screenHeight, "Projet 1 : SNAKE  v2.0 05/2024");
             Raylib.SetTargetFPS(60);
+
+            Raylib.InitAudioDevice();
 
             Game monJeu = new Game();
 
@@ -30,6 +32,8 @@ namespace Serpent
             }
 
             monJeu.Unload();
+
+            Raylib.CloseAudioDevice();
             Raylib.CloseWindow();
 
             return Task.CompletedTask;
