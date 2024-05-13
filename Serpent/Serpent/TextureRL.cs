@@ -1,18 +1,18 @@
-﻿using Raylib_CsLo;
+﻿using Raylib_cs;
 using System.Diagnostics;
 
 namespace Serpent
 {
     public class TextureRL
     {
-        public Texture texture { get; private set; }
+        public Texture2D texture { get; private set; }
         private string _name;
 
         public TextureRL(string pFileName)
         {
             _name = pFileName;
             texture = Raylib.LoadTexture(pFileName);
-            Debug.Assert(texture.width > 0, "Erreur de chargement de l'image " + pFileName);
+            Debug.Assert(texture.Width > 0, "Erreur de chargement de l'image " + pFileName);
         }
 
         public void Free()
