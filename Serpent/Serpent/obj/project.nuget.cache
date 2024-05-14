@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "eVcLKEsh4tc4diFUwxrbUb2169xH+O7i1sfFWvWUxQJhizVJhoM4ukAVbuHYvE5rNo65bibDprDsvCuIfS4X0w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\orabi\\Documents\\GitHub\\RayLib\\Serpent\\Serpent\\Serpent.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\orabi\\.nuget\\packages\\raylib-cs\\6.0.0\\raylib-cs.6.0.0.nupkg.sha512",
+    "C:\\Users\\orabi\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
