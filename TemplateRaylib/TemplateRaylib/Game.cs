@@ -1,17 +1,32 @@
 ﻿using Raylib_cs;
+using TemplateRaylib.ORN;
 
 namespace TemplateRaylib;
 
 public class Game
 {
+    public GameState GameState { get; init; }
+
+    public Game()
+    {
+        GameState = new GameState ();
+    }
     public void Load()
     {
+        GameState.ChangeScene(GameState.SceneType.Gameplay);
         
+        if (GameState != null)
+        {
+            GameState.CurrentScene.Load();
+        }
     }
 
     public void Update(float dt)
     {
-        
+        if (GameState != null)
+        {
+            GameState.CurrentScene.Update(dt);
+        }
     }
 
     public void Draw()
@@ -19,14 +34,20 @@ public class Game
         Raylib.BeginDrawing();
 
         Raylib.ClearBackground(Color.White);
-
-        Raylib.DrawText("Congrats! You created your first window!", 190, 200, 20, Color.LightGray);
-
+        
+        if (GameState != null)
+        {
+            GameState.CurrentScene.Draw();
+        }
+        
         Raylib.EndDrawing();
     }
 
     public void Unload()
     {
-        
+        if (GameState != null)
+        {
+            GameState.CurrentScene.UnLoad();
+        }
     }
 }
