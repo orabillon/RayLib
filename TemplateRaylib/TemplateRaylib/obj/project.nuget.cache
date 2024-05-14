@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "I/ozYl6O1aa9JvujAUbySP6TRY3jP7K/lBB5hU1pg70No+khKWJsG/hDwgZkhhESUAVCA7RAqzdz1U2kjhagBQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\orabi\\Documents\\GitHub\\RayLib\\TemplateRaylib\\TemplateRaylib\\TemplateRaylib.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\orabi\\.nuget\\packages\\raylib-cs\\6.0.0\\raylib-cs.6.0.0.nupkg.sha512",
+    "C:\\Users\\orabi\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
