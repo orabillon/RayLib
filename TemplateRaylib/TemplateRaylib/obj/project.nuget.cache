@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "I/ozYl6O1aa9JvujAUbySP6TRY3jP7K/lBB5hU1pg70No+khKWJsG/hDwgZkhhESUAVCA7RAqzdz1U2kjhagBQ==",
+  "dgSpecHash": "6i30+gYeGwlHq73hGBu3CsDFo2X9DeyCHT6iU4LIZxIelbcF7GhAtErFMQfOxyjAFGOQYsQS5so4yLg3yhEFUQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\orabi\\Documents\\GitHub\\RayLib\\TemplateRaylib\\TemplateRaylib\\TemplateRaylib.csproj",
+  "projectFilePath": "/home/liqiao/Documents/GitHub/RayLib/TemplateRaylib/TemplateRaylib/TemplateRaylib.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\orabi\\.nuget\\packages\\raylib-cs\\6.0.0\\raylib-cs.6.0.0.nupkg.sha512",
-    "C:\\Users\\orabi\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+    "/home/liqiao/.nuget/packages/raylib-cs/6.0.0/raylib-cs.6.0.0.nupkg.sha512",
+    "/home/liqiao/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }
