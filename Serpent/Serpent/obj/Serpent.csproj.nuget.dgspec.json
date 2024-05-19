@@ -1,32 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\orabi\\Documents\\GitHub\\RayLib\\Serpent\\Serpent\\Serpent.csproj": {}
+    "/home/liqiao/Documents/GitHub/RayLib/Serpent/Serpent/Serpent.csproj": {}
   },
   "projects": {
-    "C:\\Users\\orabi\\Documents\\GitHub\\RayLib\\Serpent\\Serpent\\Serpent.csproj": {
+    "/home/liqiao/Documents/GitHub/RayLib/Serpent/Serpent/Serpent.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\orabi\\Documents\\GitHub\\RayLib\\Serpent\\Serpent\\Serpent.csproj",
+        "projectUniqueName": "/home/liqiao/Documents/GitHub/RayLib/Serpent/Serpent/Serpent.csproj",
         "projectName": "Serpent",
-        "projectPath": "C:\\Users\\orabi\\Documents\\GitHub\\RayLib\\Serpent\\Serpent\\Serpent.csproj",
-        "packagesPath": "C:\\Users\\orabi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\orabi\\Documents\\GitHub\\RayLib\\Serpent\\Serpent\\obj\\",
+        "projectPath": "/home/liqiao/Documents/GitHub/RayLib/Serpent/Serpent/Serpent.csproj",
+        "packagesPath": "/home/liqiao/.nuget/packages/",
+        "outputPath": "/home/liqiao/Documents/GitHub/RayLib/Serpent/Serpent/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\orabi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/liqiao/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -75,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.105/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
