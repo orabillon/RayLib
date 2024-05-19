@@ -13,8 +13,9 @@ Raylib.InitWindow(screenWidth, screenHeight, "raylib Template");
 Raylib.SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 //--------------------------------------------------------------------------------------
 
-// Permet de jouer des son
+// Permet de jouer des son et regler le volume
 Raylib.InitAudioDevice();
+Raylib.SetMasterVolume(0.05f);  
 
 // chargement des ressource
     monJeu.Load();

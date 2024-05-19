@@ -4,6 +4,10 @@ using Raylib_cs;
 
 namespace TemplateRaylib.ORN;
 
+/// <summary>
+/// Classe pour la gestion des texture de raylib. Permmet de faciliter les test au chargement et
+/// la liberation de la memoire 
+/// </summary>
 public class TextureRl
 {
     public Texture2D Texture { get; private set; }

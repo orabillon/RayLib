@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.Collections.Specialized;
+using System.Numerics;
 using Raylib_cs;
 using TemplateRaylib.ORN;
 
@@ -7,6 +8,7 @@ namespace TemplateRaylib;
 public class SceneGamePlay : Scene
 {
     private Hero Hero;
+    private SoundRl sndMeteore;
     
     public GameState GameState { get; init; }
 
@@ -31,6 +33,8 @@ public class SceneGamePlay : Scene
             m.Position = new Vector2(x, y);
             listActors.Add(m);
         }
+
+        sndMeteore = new SoundRl("assets/sons/explode.wav");
         
         base.Load();
     }
@@ -38,6 +42,7 @@ public class SceneGamePlay : Scene
     public override void UnLoad()
     {
         Hero.Texture.Free();
+        sndMeteore.Free();
         base.UnLoad();
     }
 
@@ -81,10 +86,28 @@ public class SceneGamePlay : Scene
                     }
 
                     m.ToRemove = true;
-                    //sndExplode.Play();
+                    Raylib.PlaySound(sndMeteore.Sound);
                 }
             }
                 
+        }
+        
+        // Deplacement hero
+        if (Raylib.IsKeyDown(KeyboardKey.Right))
+        {
+            Hero.Move(1, 0);
+        }
+        if (Raylib.IsKeyDown(KeyboardKey.Left))
+        {
+            Hero.Move(-1, 0);
+        }
+        if (Raylib.IsKeyDown(KeyboardKey.Up))
+        {
+            Hero.Move(0, -1);
+        }
+        if (Raylib.IsKeyDown(KeyboardKey.Down))
+        {
+            Hero.Move(0, 1);
         }
         
         Clean();
@@ -101,4 +124,6 @@ public class SceneGamePlay : Scene
         
         base.Draw();
     }
+    
+    
 }

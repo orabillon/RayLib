@@ -15,7 +15,7 @@ public class Game
     {
         // Chargement ressource partager
         AssetsManager.Load();
-        GameState.ChangeScene(GameState.SceneType.Gameplay);
+        GameState.ChangeScene(GameState.SceneType.Menu);
     }
 
     public void Update(float dt)

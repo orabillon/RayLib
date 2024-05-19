@@ -5,6 +5,11 @@ namespace TemplateRaylib;
 
 public class SceneMenu : Scene
 {
+    public GameState GameState { get; init; }
+    public SceneMenu(GameState pGameState)
+    {
+        GameState = pGameState;
+    }
     public override void Load()
     {
         base.Load();

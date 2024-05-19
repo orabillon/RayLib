@@ -32,7 +32,7 @@ public class GameState
         switch (pSceneType)
         {
             case SceneType.Menu:
-                CurrentScene = new SceneMenu();
+                CurrentScene = new SceneMenu(this);
                 break;
             case SceneType.Gameplay:
                 CurrentScene = new SceneGamePlay(this);
