@@ -22,6 +22,11 @@ public interface IActor
     /// Indique si l'élément peut être supprimer. 
     /// </summary>
     bool ToRemove { get; set; }
+    
+    /// <summary>
+    /// Indique si une collision a été traitr 
+    /// </summary>
+    bool ToCollide { get; set; }
 
     /// <summary>
     /// Mise à jour de l'élément 

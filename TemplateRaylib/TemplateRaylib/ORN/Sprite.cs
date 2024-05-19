@@ -9,7 +9,8 @@ public class Sprite : IActor
     public Vector2 Position { get; set; }
     public Rectangle BoundingBox { get; private set; }
     public bool ToRemove { get; set; } = false;
-    
+    public bool ToCollide { get; set; } = false;
+
     // Sprite 
     public float VelociteX { get; set; }
     public float VelociteY { get; set; }

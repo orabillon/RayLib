@@ -7,7 +7,7 @@ public class Hero : Sprite
 {
     public float Energie { get; set; }
     
-    public Hero(string pFilePath, int pX, int pY) : base(pFilePath)
+    public Hero(string pFilePath, int pX = 0, int pY = 0) : base(pFilePath)
     {
         Energie = 100;
         Position = new Vector2(pX, pY);

@@ -13,12 +13,9 @@ public class Game
     }
     public void Load()
     {
+        // Chargement ressource partager
+        AssetsManager.Load();
         GameState.ChangeScene(GameState.SceneType.Gameplay);
-        
-        if (GameState != null)
-        {
-            GameState.CurrentScene.Load();
-        }
     }
 
     public void Update(float dt)

@@ -4,7 +4,7 @@ namespace TemplateRaylib;
 
 public class Meteor : Sprite
 {
-    public Meteor(string pFilePath, int pX, int pY) : base(pFilePath)
+    public Meteor(string pFilePath) : base(pFilePath)
     {
         do { VelociteX = Utils.GetInt(-3, 3) / 5.0f;} while(VelociteX==0);
 

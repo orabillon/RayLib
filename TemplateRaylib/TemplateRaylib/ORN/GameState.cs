@@ -35,7 +35,7 @@ public class GameState
                 CurrentScene = new SceneMenu();
                 break;
             case SceneType.Gameplay:
-                CurrentScene = new SceneGamePlay();
+                CurrentScene = new SceneGamePlay(this);
                 break;
             case SceneType.Gameover:
                 CurrentScene = new SceneGameOver();
