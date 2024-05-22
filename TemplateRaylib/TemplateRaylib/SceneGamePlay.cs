@@ -9,6 +9,7 @@ public class SceneGamePlay : Scene
 {
     private Hero Hero;
     private SoundRl sndMeteore;
+    private MusicRl muMusic;
     
     public GameState GameState { get; init; }
 
@@ -35,14 +36,18 @@ public class SceneGamePlay : Scene
         }
 
         sndMeteore = new SoundRl("assets/sons/explode.wav");
+        muMusic = new MusicRl("assets/sons/techno.mp3");
+        Raylib.PlayMusicStream(muMusic.Music);
         
         base.Load();
     }
 
     public override void UnLoad()
     {
-        Hero.Texture.Free();
+        Hero.Unload();
         sndMeteore.Free();
+        Raylib.StopMusicStream(muMusic.Music);
+        muMusic.Free();
         base.UnLoad();
     }
 
@@ -114,6 +119,8 @@ public class SceneGamePlay : Scene
         
         if(listActors.Count == 1)
             GameState.ChangeScene(GameState.SceneType.Menu);
+        
+        Raylib.UpdateMusicStream(muMusic.Music);
         
         base.Update(dt);
     }

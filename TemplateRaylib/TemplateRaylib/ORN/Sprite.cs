@@ -43,4 +43,9 @@ public class Sprite : IActor
     {
             
     }
+
+    public virtual void Unload()
+    {
+        Texture.Free();
+    }
 }

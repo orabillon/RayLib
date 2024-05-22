@@ -38,7 +38,7 @@ public class GameState
                 CurrentScene = new SceneGamePlay(this);
                 break;
             case SceneType.Gameover:
-                CurrentScene = new SceneGameOver();
+                CurrentScene = new SceneGameOver(this);
                 break;
         }
 

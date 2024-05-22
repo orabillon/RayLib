@@ -5,6 +5,12 @@ namespace TemplateRaylib;
 
 public class SceneGameOver : Scene
 {
+    public GameState GameState { get; init; }
+
+    public SceneGameOver(GameState pGameState)
+    {
+        GameState = pGameState;
+    }
     public override void Load()
     {
         base.Load();
@@ -17,6 +23,11 @@ public class SceneGameOver : Scene
 
     public override void Update(float dt)
     {
+        if (Raylib.IsKeyPressed(KeyboardKey.Enter))
+        {
+            GameState.ChangeScene(GameState.SceneType.Menu);
+        }
+        
         base.Update(dt);
     }
 
