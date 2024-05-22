@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "5F11dHQoQaZpRuEm14kEJe6/wI0hyPXt9X4Qbjd6Xh77dsgHAhUlgxIc9BJhsjUiSfgYIzSqkAI+SUtIUMkRxQ==",
+  "success": true,
+  "projectFilePath": "/home/liqiao/Documents/GitHub/RayLib/Mon Snake/MonSnake/MonSnake.csproj",
+  "expectedPackageFiles": [
+    "/home/liqiao/.nuget/packages/raylib-cs/6.0.0/raylib-cs.6.0.0.nupkg.sha512",
+    "/home/liqiao/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
