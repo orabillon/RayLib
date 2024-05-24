@@ -55,5 +55,8 @@ public class Game
         {
             GameState.CurrentScene.UnLoad();
         }
+        
+         // liberation des ressources partager 
+        AssetsManager.Unload();
     }
 }
