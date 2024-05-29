@@ -1,6 +1,7 @@
 
 using System.Diagnostics;
 using Raylib_cs;
+using static Raylib_cs.Raylib;
 
 namespace MonSnake.ORN;
 
@@ -16,13 +17,13 @@ public class SoundRl
     public SoundRl(string pFileName)
     {
         _name = pFileName;
-        Sound = Raylib.LoadSound(pFileName);
+        Sound = LoadSound(pFileName);
         Debug.Assert(Sound.FrameCount > 0, "Erreur de chargement du son " + pFileName);
     }
 
     public void Free()
     {
         Debug.WriteLine("Libere " + _name);
-        Raylib.UnloadSound(Sound);
+        UnloadSound(Sound);
     }
 }

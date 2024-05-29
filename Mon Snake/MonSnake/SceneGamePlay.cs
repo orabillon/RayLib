@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Numerics;
 using Raylib_cs;
+using static Raylib_cs.Raylib;
 using MonSnake.ORN;
 using Color = Raylib_cs.Color;
 
@@ -45,7 +46,7 @@ public class SceneGamePlay : Scene
             mapWidth = map.GetLength(1);
             mapHeight = map.GetLength(0);
 
-            marginWidth = (Raylib.GetScreenWidth() - mapWidth * _tailleCase)/2;
+            marginWidth = (GetScreenWidth() - mapWidth * _tailleCase)/2;
             marginHeight = 30;
 
             for (int i = 0; i < mapHeight; i++)
@@ -70,7 +71,7 @@ public class SceneGamePlay : Scene
 
             NewApple();
 
-            Raylib.PlayMusicStream(msPlay);
+            PlayMusicStream(msPlay);
         }
 
         private void SnakeMove(int pOffsetX, int pOffsetY)
@@ -137,17 +138,17 @@ public class SceneGamePlay : Scene
 
         private void Play() 
         {
-            timer += Raylib.GetFrameTime();
+            timer += GetFrameTime();
 
-            if (Raylib.IsKeyDown(KeyboardKey.Right) && (snakeDir == Direction.UP || snakeDir == Direction.DOWN))
+            if (IsKeyDown(KeyboardKey.Right) && (snakeDir == Direction.UP || snakeDir == Direction.DOWN))
             { NextDirection = Direction.RIGHT; }
-            if (Raylib.IsKeyDown(KeyboardKey.Left) && (snakeDir == Direction.UP || snakeDir == Direction.DOWN))
+            if (IsKeyDown(KeyboardKey.Left) && (snakeDir == Direction.UP || snakeDir == Direction.DOWN))
             { NextDirection = Direction.LEFT; }
-            if (Raylib.IsKeyDown(KeyboardKey.Up) && (snakeDir == Direction.LEFT || snakeDir == Direction.RIGHT))
+            if (IsKeyDown(KeyboardKey.Up) && (snakeDir == Direction.LEFT || snakeDir == Direction.RIGHT))
             { NextDirection = Direction.UP; }
-            if (Raylib.IsKeyDown(KeyboardKey.Down) && (snakeDir == Direction.LEFT || snakeDir == Direction.RIGHT))
+            if (IsKeyDown(KeyboardKey.Down) && (snakeDir == Direction.LEFT || snakeDir == Direction.RIGHT))
             { NextDirection = Direction.DOWN; }
-            if (Raylib.IsKeyPressed(KeyboardKey.Space))
+            if (IsKeyPressed(KeyboardKey.Space))
             { gameState = eGameState.PAUSE; }
 
             if (timer >= snakeSpeed)
@@ -176,7 +177,7 @@ public class SceneGamePlay : Scene
             // est ce que le serpent mange la sndPomme ?? 
             if (head.point == Apple) 
             {
-                Raylib.PlaySound(sndPomme);
+                PlaySound(sndPomme);
                 NewApple();
                 snakeLength++;
                 score++;
@@ -214,8 +215,8 @@ public class SceneGamePlay : Scene
         texSnakeBody[12] = new TextureRl("assets/images/body_bottomleft.png");
 
         //chargement sons
-        sndPomme = Raylib.LoadSound("assets/sons/apple.wav");
-        msPlay = Raylib.LoadMusicStream("assets/sons/SnakeRaylib.mp3");
+        sndPomme = LoadSound("assets/sons/apple.wav");
+        msPlay = LoadMusicStream("assets/sons/SnakeRaylib.mp3");
         msPlay.Looping = true;
 
         _Init();
@@ -226,7 +227,7 @@ public class SceneGamePlay : Scene
     public override void UnLoad()
     {
         
-        Raylib.UnloadTexture(texApple);
+        UnloadTexture(texApple);
 
         foreach (TextureRl item in texSnakeBody)
         {
@@ -246,17 +247,17 @@ public class SceneGamePlay : Scene
                 item.Free();
         }
 
-        Raylib.StopMusicStream(msPlay);
+        StopMusicStream(msPlay);
         
-        Raylib.UnloadSound(sndPomme);
-        Raylib.UnloadMusicStream(msPlay);
+        UnloadSound(sndPomme);
+        UnloadMusicStream(msPlay);
         
         base.UnLoad();
     }
 
     public override void Update(float dt)
     {
-        Raylib.UpdateMusicStream(msPlay);
+        UpdateMusicStream(msPlay);
 
         switch (gameState)
         {
@@ -264,7 +265,7 @@ public class SceneGamePlay : Scene
                 Play();
                 break;
             case eGameState.PAUSE:
-                if (Raylib.IsKeyPressed(KeyboardKey.Space))
+                if (IsKeyPressed(KeyboardKey.Space))
                 { gameState = eGameState.PLAY; }
                 break;
         }
@@ -276,7 +277,7 @@ public class SceneGamePlay : Scene
 
     public override void Draw()
     {
-        Font fnt = Raylib.GetFontDefault();
+        Font fnt = GetFontDefault();
         
          // Map
             for (int l = 0; l < mapHeight; l++)
@@ -285,12 +286,12 @@ public class SceneGamePlay : Scene
                 {
                     int x = c * _tailleCase;
                     int y = l * _tailleCase;
-                    Raylib.DrawRectangleLines( x + marginWidth , y + marginHeight,_tailleCase-1, _tailleCase-1, Raylib_cs.Color.Gray);
+                    DrawRectangleLines( x + marginWidth , y + marginHeight,_tailleCase-1, _tailleCase-1, Color.Gray);
                 }
             }
 
             // Apple
-            Raylib.DrawTexture(texApple, Apple.X * _tailleCase + marginWidth, Apple.Y * _tailleCase + marginHeight, Raylib_cs.Color.White);
+            DrawTexture(texApple, Apple.X * _tailleCase + marginWidth, Apple.Y * _tailleCase + marginHeight, Color.White);
 
             // Snake
             int index = 0;
@@ -301,13 +302,13 @@ public class SceneGamePlay : Scene
 
                 if (p == snake.Last<SPoint>()) 
                 {
-                    Raylib.DrawTexture(texSnakeHead[(int)snakeDir].Texture, x + marginWidth, y + marginHeight, Raylib_cs.Color.White);
+                    DrawTexture(texSnakeHead[(int)snakeDir].Texture, x + marginWidth, y + marginHeight, Color.White);
                 }
                 else if (p== snake.First<SPoint>()) 
                 {
                     SPoint next = snake.ElementAt(1);
                     
-                    Raylib.DrawTexture(texSnakeTail[(int)next.direction].Texture, x + marginWidth, y + marginHeight, Raylib_cs.Color.White);
+                    DrawTexture(texSnakeTail[(int)next.direction].Texture, x + marginWidth, y + marginHeight, Color.White);
                 }
                 else
                 {
@@ -326,7 +327,7 @@ public class SceneGamePlay : Scene
                     if (cleft == before || cleft == after) mask += 8;
                     if (cright == before || cright == after) mask += 2;
 
-                    Raylib.DrawTexture(texSnakeBody[mask].Texture, x + marginWidth, y + marginHeight, Raylib_cs.Color.White);
+                    DrawTexture(texSnakeBody[mask].Texture, x + marginWidth, y + marginHeight, Color.White);
                 }
                 index++;
             }
@@ -348,17 +349,17 @@ public class SceneGamePlay : Scene
             string Info = $"score : {score}     -     Etat du jeu : {statusJeu}";
             
 
-            Vector2 txtScoreSize = Raylib.MeasureTextEx(fnt, Info, 30, 1);
-            Vector2 pos = new Vector2((Raylib.GetScreenWidth() - txtScoreSize.X) / 2, (Raylib.GetScreenHeight() - txtScoreSize.Y * 2));
+            Vector2 txtScoreSize = MeasureTextEx(fnt, Info, 30, 1);
+            Vector2 pos = new Vector2((GetScreenWidth() - txtScoreSize.X) / 2, (GetScreenHeight() - txtScoreSize.Y * 2));
 
-            var color = Raylib_cs.Color.DarkBlue;
+            var color = Color.DarkBlue;
 
             if (gameState == eGameState.GAMEOVER) 
             {
                 GameState.ChangeScene(GameState.SceneType.Gameover);
             }
 
-            Raylib.DrawTextEx(fnt, Info, pos, 30, 1, color);
+            DrawTextEx(fnt, Info, pos, 30, 1, color);
         
         base.Draw();
     }

@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using Raylib_cs;
+using static Raylib_cs.Raylib;
 using MonSnake.ORN;
 
 namespace MonSnake;
@@ -37,8 +38,8 @@ public class SceneMenu : Scene
     public SceneMenu(GameState pGameState)
     {
         GameState = pGameState;
-        ScreenHeight = Raylib.GetScreenHeight();
-        ScreenWidth = Raylib.GetScreenWidth();
+        ScreenHeight = GetScreenHeight();
+        ScreenWidth = GetScreenWidth();
     }
     public override void Load()
     {
@@ -54,7 +55,7 @@ public class SceneMenu : Scene
         CoulDelayTitre= CoulDelay;
         
         msMenu = new MusicRl("assets/sons/Menu.mp3");
-        Raylib.PlayMusicStream(msMenu.Music);
+        PlayMusicStream(msMenu.Music);
         
         base.Load();
     }
@@ -63,7 +64,7 @@ public class SceneMenu : Scene
     {
         _button.Unload();
         fnt.Free();
-        Raylib.StopMusicStream(msMenu.Music);
+        StopMusicStream(msMenu.Music);
         msMenu.Free();
         base.UnLoad();
     }
@@ -85,7 +86,7 @@ public class SceneMenu : Scene
                 
         }
         
-        Raylib.UpdateMusicStream(msMenu.Music);
+        UpdateMusicStream(msMenu.Music);
         
         base.Update(dt);
     }
@@ -94,15 +95,15 @@ public class SceneMenu : Scene
     {
         String Titre = "(snake)";
 
-        Vector2 txtSizeT = Raylib.MeasureTextEx(fnt.Font, Titre, 100, 0);
+        Vector2 txtSizeT = MeasureTextEx(fnt.Font, Titre, 100, 0);
         float w = txtSizeT.X;
         float h = txtSizeT.Y;
         float x = (ScreenWidth - w) / 2;
         float y = 0;
         
         y = (float)(Math.Sin((x + MenuSin) / 50) * AmplitudeSin); 
-        Raylib.DrawTextEx(fnt.Font,Titre, new Vector2(x, y + (ScreenHeight - h) /2), 100,1, LstColor[CoulSnakeTitre]);
-        x = x + (Raylib.MeasureTextEx(fnt.Font, Titre, 100, 0).X) + 10;
+        DrawTextEx(fnt.Font,Titre, new Vector2(x, y + (ScreenHeight - h) /2), 100,1, LstColor[CoulSnakeTitre]);
+        x = x + (MeasureTextEx(fnt.Font, Titre, 100, 0).X) + 10;
         
         base.Draw();
     }

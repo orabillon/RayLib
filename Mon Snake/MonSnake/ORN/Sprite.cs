@@ -1,5 +1,6 @@
 using System.Numerics;
 using Raylib_cs;
+using static Raylib_cs.Raylib;
 
 namespace MonSnake.ORN;
 
@@ -25,7 +26,7 @@ public class Sprite : IActor
     
     public virtual void Draw()
     {
-        Raylib.DrawTexture(Texture.Texture,(int)Position.X, (int)Position.Y, Color.White);
+        DrawTexture(Texture.Texture,(int)Position.X, (int)Position.Y, Color.White);
     }
 
     public virtual void Update(float dt)

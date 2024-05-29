@@ -1,6 +1,7 @@
 
 using System.Diagnostics;
 using Raylib_cs;
+using static Raylib_cs.Raylib;
 
 namespace MonSnake.ORN;
 
@@ -16,13 +17,13 @@ public class FontRl
     public FontRl(string pFileName,int pSize)
     {
         _name = pFileName;
-        Font = Raylib.LoadFontEx(pFileName,pSize,null,0);
+        Font = LoadFontEx(pFileName,pSize,null,0);
         Debug.Assert(Font.Texture.Width > 0, "Erreur de chargement de la police " + pFileName);
     }
 
     public void Free()
     {
         Debug.WriteLine("Libere " + _name);
-        Raylib.UnloadFont(Font);
+        UnloadFont(Font);
     }
 }

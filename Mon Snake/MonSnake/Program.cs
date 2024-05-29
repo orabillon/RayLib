@@ -1,4 +1,5 @@
 ﻿using Raylib_cs;
+using static Raylib_cs.Raylib;
 using MonSnake;
 
 // Initialization
@@ -8,22 +9,22 @@ const int screenHeight = 600;
 
 Game monJeu = new Game();
 
-Raylib.InitWindow(screenWidth, screenHeight, "raylib - Mon Snake 1.0");
+InitWindow(screenWidth, screenHeight, "raylib - Mon Snake 1.0");
 
-Raylib.SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
+SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 //--------------------------------------------------------------------------------------
 
 // Permet de jouer des son et regler le volume
-Raylib.InitAudioDevice();
-Raylib.SetMasterVolume(0.5f);  
+InitAudioDevice();
+SetMasterVolume(0.5f);  
 
 // chargement des ressource
     monJeu.Load();
 
 // Main game loop
-while (!Raylib.WindowShouldClose())    // Detect window close button or ESC key
+while (!WindowShouldClose())    // Detect window close button or ESC key
 {
-    monJeu.Update(Raylib.GetFrameTime());
+    monJeu.Update(GetFrameTime());
 
     monJeu.Draw();
 }
@@ -31,8 +32,8 @@ while (!Raylib.WindowShouldClose())    // Detect window close button or ESC key
 // De-Initialization
 //--------------------------------------------------------------------------------------
 monJeu.Unload();
-Raylib.CloseAudioDevice();
-Raylib.CloseWindow();        // Close window and OpenGL context
+CloseAudioDevice();
+CloseWindow();        // Close window and OpenGL context
 //--------------------------------------------------------------------------------------
 
 return 0;

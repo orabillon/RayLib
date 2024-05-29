@@ -1,6 +1,4 @@
-﻿using Raylib_cs;
-
-namespace MonSnake.ORN;
+﻿namespace MonSnake.ORN;
 
 /// <summary>
 /// Définition de la structure d'une scène, d'un écran 

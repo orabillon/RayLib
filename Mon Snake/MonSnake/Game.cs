@@ -1,4 +1,5 @@
 ﻿using Raylib_cs;
+using static Raylib_cs.Raylib;
 using MonSnake.ORN;
 
 namespace MonSnake;
@@ -37,9 +38,9 @@ public class Game
 
     public void Draw()
     {
-        Raylib.BeginDrawing();
+        BeginDrawing();
 
-        Raylib.ClearBackground(Color.White);
+        ClearBackground(Color.White);
         
         if (GameState != null)
         {

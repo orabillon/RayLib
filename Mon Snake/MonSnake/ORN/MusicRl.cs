@@ -1,6 +1,7 @@
 
 using System.Diagnostics;
 using Raylib_cs;
+using static Raylib_cs.Raylib;
 
 namespace MonSnake.ORN;
 
@@ -16,13 +17,13 @@ public class MusicRl
     public MusicRl(string pFileName)
     {
         _name = pFileName;
-        Music = Raylib.LoadMusicStream(pFileName);
+        Music = LoadMusicStream(pFileName);
         Debug.Assert(Music.FrameCount > 0, "Erreur de chargement de la musique " + pFileName);
     }
 
     public void Free()
     {
         Debug.WriteLine("Libere " + _name);
-        Raylib.UnloadMusicStream(Music);
+        UnloadMusicStream(Music);
     }
 }
