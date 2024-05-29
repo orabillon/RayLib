@@ -1,4 +1,5 @@
 using Raylib_cs;
+using static Raylib_cs.Raylib;
 
 namespace TemplateRaylib.ORN;
 
@@ -22,6 +23,6 @@ public static class Utils
     
     public static bool CollideByBox(IActor pActor1, IActor pActor2)
     {
-        return Raylib.CheckCollisionRecs(pActor1.BoundingBox, pActor2.BoundingBox);
+        return CheckCollisionRecs(pActor1.BoundingBox, pActor2.BoundingBox);
     }
 }

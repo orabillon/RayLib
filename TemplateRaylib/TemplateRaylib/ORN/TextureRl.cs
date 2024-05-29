@@ -1,6 +1,7 @@
 
 using System.Diagnostics;
 using Raylib_cs;
+using static Raylib_cs.Raylib;
 
 namespace TemplateRaylib.ORN;
 
@@ -16,13 +17,13 @@ public class TextureRl
     public TextureRl(string pFileName)
     {
         _name = pFileName;
-        Texture = Raylib.LoadTexture(pFileName);
+        Texture = LoadTexture(pFileName);
         Debug.Assert(Texture.Width > 0, "Erreur de chargement de l'image " + pFileName);
     }
 
     public void Free()
     {
         Debug.WriteLine("Libere " + _name);
-        Raylib.UnloadTexture(Texture);
+        UnloadTexture(Texture);
     }
 }

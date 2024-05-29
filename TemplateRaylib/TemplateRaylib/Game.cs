@@ -2,6 +2,7 @@
 using TemplateRaylib.ORN;
 
 namespace TemplateRaylib;
+using static Raylib_cs.Raylib;
 
 public class Game
 {
@@ -28,16 +29,15 @@ public class Game
 
     public void Draw()
     {
-        Raylib.BeginDrawing();
+        BeginDrawing();
 
-        Raylib.ClearBackground(Color.White);
+        ClearBackground(Color.White);
         
         if (GameState != null)
         {
             GameState.CurrentScene.Draw();
         }
-        
-        Raylib.EndDrawing();
+        EndDrawing();
     }
 
     public void Unload()

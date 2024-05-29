@@ -1,6 +1,7 @@
 ﻿using System.Collections.Specialized;
 using System.Numerics;
 using Raylib_cs;
+using static Raylib_cs.Raylib;
 using TemplateRaylib.ORN;
 
 namespace TemplateRaylib;
@@ -22,7 +23,7 @@ public class SceneGamePlay : Scene
     {
         // personage
         Hero = new Hero("assets/images/ship.png");
-        Hero.Position = new Vector2(Raylib.GetScreenWidth()/2 - Hero.Texture.Texture.Width / 2, Raylib.GetScreenHeight()/2 - Hero.Texture.Texture.Height / 2);
+        Hero.Position = new Vector2(GetScreenWidth()/2 - Hero.Texture.Texture.Width / 2, GetScreenHeight()/2 - Hero.Texture.Texture.Height / 2);
         listActors.Add(Hero);
         
         // Meteor
@@ -37,7 +38,7 @@ public class SceneGamePlay : Scene
 
         sndMeteore = new SoundRl("assets/sons/explode.wav");
         muMusic = new MusicRl("assets/sons/techno.mp3");
-        Raylib.PlayMusicStream(muMusic.Music);
+        PlayMusicStream(muMusic.Music);
         
         base.Load();
     }
@@ -46,7 +47,7 @@ public class SceneGamePlay : Scene
     {
         Hero.Unload();
         sndMeteore.Free();
-        Raylib.StopMusicStream(muMusic.Music);
+        StopMusicStream(muMusic.Music);
         muMusic.Free();
         base.UnLoad();
     }
@@ -63,19 +64,19 @@ public class SceneGamePlay : Scene
                     m.Position = new Vector2(0, m.Position.Y);
                     m.VelociteX *= -1;
                 }
-                if(m.Position.X + m.BoundingBox.Width > Raylib.GetScreenWidth()) {
+                if(m.Position.X + m.BoundingBox.Width > GetScreenWidth()) {
                     m.VelociteX *= -1;
-                    m.Position = new Vector2(Raylib.GetScreenWidth() - m.BoundingBox.Width, m.Position.Y);
+                    m.Position = new Vector2(GetScreenWidth() - m.BoundingBox.Width, m.Position.Y);
                 }
                 if (m.Position.Y < 0)
                 {
                     m.Position = new Vector2(m.Position.X, 0);
                     m.VelociteY *= -1;
                 }
-                if (m.Position.Y + m.BoundingBox.Height > Raylib.GetScreenHeight())
+                if (m.Position.Y + m.BoundingBox.Height > GetScreenHeight())
                 {
                     m.VelociteY *= -1;
-                    m.Position = new Vector2(m.Position.X, Raylib.GetScreenHeight() - m.BoundingBox.Height);
+                    m.Position = new Vector2(m.Position.X, GetScreenHeight() - m.BoundingBox.Height);
 
                 }
                 
@@ -91,26 +92,26 @@ public class SceneGamePlay : Scene
                     }
 
                     m.ToRemove = true;
-                    Raylib.PlaySound(sndMeteore.Sound);
+                    PlaySound(sndMeteore.Sound);
                 }
             }
                 
         }
         
         // Deplacement hero
-        if (Raylib.IsKeyDown(KeyboardKey.Right))
+        if (IsKeyDown(KeyboardKey.Right))
         {
             Hero.Move(1, 0);
         }
-        if (Raylib.IsKeyDown(KeyboardKey.Left))
+        if (IsKeyDown(KeyboardKey.Left))
         {
             Hero.Move(-1, 0);
         }
-        if (Raylib.IsKeyDown(KeyboardKey.Up))
+        if (IsKeyDown(KeyboardKey.Up))
         {
             Hero.Move(0, -1);
         }
-        if (Raylib.IsKeyDown(KeyboardKey.Down))
+        if (IsKeyDown(KeyboardKey.Down))
         {
             Hero.Move(0, 1);
         }
@@ -120,14 +121,14 @@ public class SceneGamePlay : Scene
         if(listActors.Count == 1)
             GameState.ChangeScene(GameState.SceneType.Menu);
         
-        Raylib.UpdateMusicStream(muMusic.Music);
+        UpdateMusicStream(muMusic.Music);
         
         base.Update(dt);
     }
 
     public override void Draw()
     {
-        Raylib.DrawTextEx(AssetsManager.MainFont, "GamePlay", new Vector2(1,1), 30, 1,Color.LightGray);
+        DrawTextEx(AssetsManager.MainFont, "GamePlay", new Vector2(1,1), 30, 1,Color.LightGray);
         
         base.Draw();
     }

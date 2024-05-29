@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Numerics;
 using Raylib_cs;
+using static Raylib_cs.Raylib;
 
 namespace TemplateRaylib.ORN;
 
@@ -28,9 +29,9 @@ public class Button : Sprite
 
     public override void Update(float dt)
     {
-       Vector2 MousePos = Raylib.GetMousePosition();
+       Vector2 MousePos = GetMousePosition();
 
-        if(Raylib.CheckCollisionPointRec(MousePos, BoundingBox))
+        if(CheckCollisionPointRec(MousePos, BoundingBox))
         {
             if (!isHover)
             {
@@ -61,7 +62,7 @@ public class Button : Sprite
 
         if(isHover)
         {
-            if (Raylib.IsMouseButtonPressed(MouseButton.Left))
+            if (IsMouseButtonPressed(MouseButton.Left))
             {
                   
                 if(onClick != null) {  onClick(this); }

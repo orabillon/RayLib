@@ -2,6 +2,7 @@
 using TemplateRaylib.ORN;
 
 namespace TemplateRaylib;
+using static Raylib_cs.Raylib;
 
 public class SceneGameOver : Scene
 {
@@ -23,7 +24,7 @@ public class SceneGameOver : Scene
 
     public override void Update(float dt)
     {
-        if (Raylib.IsKeyPressed(KeyboardKey.Enter))
+        if (IsKeyPressed(KeyboardKey.Enter))
         {
             GameState.ChangeScene(GameState.SceneType.Menu);
         }
@@ -33,7 +34,7 @@ public class SceneGameOver : Scene
 
     public override void Draw()
     {
-        Raylib.DrawText("GameOver", 190, 200, 20, Color.LightGray);
+        DrawText("GameOver", 190, 200, 20, Color.LightGray);
 
         base.Draw();
     }
