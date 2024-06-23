@@ -128,24 +128,32 @@
     ]
   },
   "packageFolders": {
-    "/home/liqiao/.nuget/packages/": {}
+    "C:\\Users\\orabi\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/liqiao/Documents/GitHub/RayLib/Mon Snake/MonSnake/MonSnake.csproj",
+      "projectUniqueName": "C:\\Users\\orabi\\Documents\\GitHub\\RayLib\\C#\\Mon Snake\\MonSnake\\MonSnake.csproj",
       "projectName": "MonSnake",
-      "projectPath": "/home/liqiao/Documents/GitHub/RayLib/Mon Snake/MonSnake/MonSnake.csproj",
-      "packagesPath": "/home/liqiao/.nuget/packages/",
-      "outputPath": "/home/liqiao/Documents/GitHub/RayLib/Mon Snake/MonSnake/obj/",
+      "projectPath": "C:\\Users\\orabi\\Documents\\GitHub\\RayLib\\C#\\Mon Snake\\MonSnake\\MonSnake.csproj",
+      "packagesPath": "C:\\Users\\orabi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\orabi\\Documents\\GitHub\\RayLib\\C#\\Mon Snake\\MonSnake\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/home/liqiao/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\orabi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -158,6 +166,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -185,7 +198,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.105/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
